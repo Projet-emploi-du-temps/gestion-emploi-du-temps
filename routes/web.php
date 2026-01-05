@@ -23,3 +23,7 @@ Route::get('/admin/dashboard',[AdminController::class,'showDashboard']);
 
 Route::get('/formateur/dashboard',[FormateurController::class,'dashboard']);
 
+Route::get('/', function () {
+    return view('welcome');
+});
+

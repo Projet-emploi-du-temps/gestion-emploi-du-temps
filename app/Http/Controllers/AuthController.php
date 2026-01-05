@@ -25,7 +25,7 @@ class AuthController extends Controller
             // 'password' => 'required|min:6|confirmed',
         ]);
 
-        \Log::info('oussama');
+        
         // ⚠ هنا حددي role_id  
         // admin = 1  /  formateur = 2  (مثال فقط)
         $roleId = 2; // خليتو Formateur افتراضياً
@@ -46,23 +46,36 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
 
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return back()->with('error', 'Email ou mot de passe incorrect');
-        }
+    // 👇 الشرط الخاص بالأدمن
+    if ($request->email === 'admin@gmail.com' && $request->password === '12345678') {
 
-        $user = Auth::user();
+        $admin = User::where('email', 'admin@gmail.com')->first();
 
-        if ($user->role->name === 'admin') {
+        if ($admin) {
+            Auth::login($admin);
             return redirect('/admin/dashboard');
         }
+    }
 
-        return redirect('/formateur/dashboard');
+    // 👇 تسجيل دخول عادي
+    if (!Auth::attempt($request->only('email', 'password'))) {
+        return back()->with('error', 'Email ou mot de passe incorrect');
+    }
+
+    $user = Auth::user();
+
+    if ($user->role->name === 'admin') {
+        return redirect('/admin/dashboard');
+    }
+
+    return redirect('/formateur/dashboard');
 }
+
 
 
     public function logout()

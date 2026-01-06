@@ -21,7 +21,7 @@ Route::post('/logout',[AuthController::class,'logout'])->middleware('auth');
 Route::get('/admin/dashboard',[AdminController::class,'showDashboard']);
 
 
-Route::get('/formateur/dashboard',[FormateurController::class,'dashboard']);
+Route::get('/formateur/dashboard',[FormateurController::class,'showDashboard']);
 
 Route::get('/', function () {
     return view('welcome');

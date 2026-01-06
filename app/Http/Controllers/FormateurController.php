@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class FormateurController extends Controller
 {
-    public function index()
+    public function showDashboard()
     {
         return "Formateur Dashboard";
     }

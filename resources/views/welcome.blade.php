@@ -8,67 +8,111 @@
 
     <style>
         body{
-            background:#f8f8f8;
+            background:#f5f7fb;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .navbar{
+            background:white;
+            box-shadow:0 2px 10px rgba(0,0,0,0.05);
         }
 
         .hero{
-            min-height:100vh;
+            min-height:90vh;
             display:flex;
             align-items:center;
         }
 
+        .badge-custom{
+            background:#e9ecff;
+            color:#3d4fc9;
+            padding:8px 14px;
+            border-radius:20px;
+            font-size:14px;
+        }
+
+        .title{
+            color:#3d4fc9;
+            font-weight:800;
+        }
+
         .btn-main{
-            background:#3b4cc2;
+            background:#3d4fc9;
             color:white;
+            padding:10px 20px;
+            border-radius:10px;
         }
 
         .btn-main:hover{
-            background:#3b4cc2;
+            background:#2e3ead;
             color:white;
+        }
+
+        footer{
+            background:#fff;
+            padding:20px;
+            text-align:center;
+            color:#777;
+            border-top:1px solid #eee;
         }
     </style>
 </head>
 
 <body>
 
-<nav class="navbar ">
-    <div class="container">
-        <img src="/logo.png" width="80">
+<nav class="navbar">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div>
+            <img src="/logo.png" width="70">
+        </div>
 
-        <a href="{{ route('login') }}" class="btn btn-primary">
+        <a href="/login" class="btn btn-main">
             Se connecter
         </a>
     </div>
 </nav>
 
 
-<section class="hero mt-0" >
+<section class="hero">
     <div class="container">
+
         <div class="row align-items-center">
 
             <div class="col-md-6">
 
-                <h2 class="fw-bold text-primary">
-                    Platform de gestion de l’emploi du temps
-                </h2>
+                <span class="badge-custom">Bienvenue sur notre plateforme</span>
+
+                <h1 class="mt-3 title">
+                    Gérez vos emplois du temps
+                    <br>
+                    facilement & rapidement
+                </h1>
 
                 <p class="mt-3">
-                    Transformez la gestion de vos emplois du temps en une gestion automatisée et efficace
+                    Une solution intuitive pour les formateurs, étudiants et administrateurs.
+                    Consultez et organisez vos plannings en quelques clics.
                 </p>
 
-                <a href="/" class="btn btn-main mt-3">
-                    consultez votre emploi du temps
+                <a href="/login" class="btn btn-main mt-2">
+                    Consulter mon emploi du temps
                 </a>
 
             </div>
 
-            <div class="col-md-6">
-                <img src="/planning.jpg" class="img-fluid">
+
+            <div class="col-md-6 text-center">
+                <img src="/planning.jpg" class="img-fluid rounded-4 shadow">
             </div>
 
         </div>
+
     </div>
 </section>
+
+
+<footer>
+    © 2026 - Plateforme de gestion d'emploi du temps
+</footer>
 
 </body>
 </html>
